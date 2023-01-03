@@ -1,14 +1,15 @@
 package com.example.flickrbrowserapp
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.flickrbrowserapp.databinding.ItemRowBinding
 
 
 
-class RecyclerViewAdapter(var activity: MainActivity ,var photoList:ArrayList<PhotoItem>):
-    RecyclerView.Adapter<RecyclerViewAdapter.ItemViewHolder>(){
+class RecyclerViewAdapter(val photoClickInterface:PhotoClickInterface):
+    ListAdapter<PhotoItem,RecyclerViewAdapter.ItemViewHolder>(PhotoDiffUtill()){
     class ItemViewHolder(var binding:ItemRowBinding):RecyclerView.ViewHolder(binding.root)
 
 
@@ -19,28 +20,23 @@ class RecyclerViewAdapter(var activity: MainActivity ,var photoList:ArrayList<Ph
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val photo = photoList[position]
-        val serverID = photo.server
+        val photo= getItem(position)
+        val serverID =photo.server
         val secret = photo.secret
         val id = photo.id
 
 
         holder.binding.apply {
-
-            val photLink="https://live.staticflicker.com/${serverID}/${id}_${secret}.jpg"
-            Glide.with(activity).load(photLink).into(ImageView1)
-
+            val photLink="https://live.staticflickr.com/${serverID}/${id}_${secret}.jpg"
+            Glide.with(this.root.context).load(photLink).into(ImageView1)
             ImageView1.setOnClickListener{
-                 activity.hideRv(photLink)
+               //  activity.hideRv(photLink)
+                photoClickInterface.onPhotoClick(photo)
             }
         }
     }
-
-    override fun getItemCount() =photoList.size
-
-  fun updatePhotosList(newList:ArrayList<PhotoItem>){
-    photoList=newList
-    notifyDataSetChanged()
+    interface PhotoClickInterface{
+         fun onPhotoClick(photoItem:PhotoItem)
 
     }
 }

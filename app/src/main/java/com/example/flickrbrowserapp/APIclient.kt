@@ -2,7 +2,7 @@ package com.example.flickrbrowserapp
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class APIClient{
+class APIclient{
     var retrofit:Retrofit? = null
     fun getClient():Retrofit?{
         retrofit = Retrofit.Builder()
