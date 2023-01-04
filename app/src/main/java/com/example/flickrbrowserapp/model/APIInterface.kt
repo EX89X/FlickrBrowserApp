@@ -1,5 +1,6 @@
-package com.example.flickrbrowserapp
+package com.example.flickrbrowserapp.model
 
+import com.example.flickrbrowserapp.model.Photos
 import retrofit2.http.GET
 import retrofit2.http.Query
 

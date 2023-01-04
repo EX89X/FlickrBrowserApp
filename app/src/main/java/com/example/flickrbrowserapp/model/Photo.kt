@@ -1,4 +1,4 @@
-package com.example.flickrbrowserapp
+package com.example.flickrbrowserapp.model
 
 data class Photo(
     val farm: Int,

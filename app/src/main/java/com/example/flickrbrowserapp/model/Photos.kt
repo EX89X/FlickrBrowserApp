@@ -1,4 +1,4 @@
-package com.example.flickrbrowserapp
+package com.example.flickrbrowserapp.model
 
 data class Photos(
     val photos: PhotosX,

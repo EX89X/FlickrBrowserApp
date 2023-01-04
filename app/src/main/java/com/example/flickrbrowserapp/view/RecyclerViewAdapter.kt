@@ -1,15 +1,15 @@
-package com.example.flickrbrowserapp
+package com.example.flickrbrowserapp.view
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.flickrbrowserapp.databinding.ItemRowBinding
+import com.example.flickrbrowserapp.model.PhotoItem
 
 
-
-class RecyclerViewAdapter(val photoClickInterface:PhotoClickInterface):
-    ListAdapter<PhotoItem,RecyclerViewAdapter.ItemViewHolder>(PhotoDiffUtill()){
+class RecyclerViewAdapter(val photoClickInterface: PhotoClickInterface):
+    ListAdapter<PhotoItem, RecyclerViewAdapter.ItemViewHolder>(PhotoDiffUtill()){
     class ItemViewHolder(var binding:ItemRowBinding):RecyclerView.ViewHolder(binding.root)
 
 
@@ -36,7 +36,7 @@ class RecyclerViewAdapter(val photoClickInterface:PhotoClickInterface):
         }
     }
     interface PhotoClickInterface{
-         fun onPhotoClick(photoItem:PhotoItem)
+         fun onPhotoClick(photoItem: PhotoItem)
 
     }
 }

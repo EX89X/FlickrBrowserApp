@@ -1,4 +1,4 @@
-package com.example.flickrbrowserapp
+package com.example.flickrbrowserapp.model
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

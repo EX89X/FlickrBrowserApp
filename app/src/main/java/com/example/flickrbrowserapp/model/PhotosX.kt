@@ -1,4 +1,6 @@
-package com.example.flickrbrowserapp
+package com.example.flickrbrowserapp.model
+
+import com.example.flickrbrowserapp.model.Photo
 
 data class PhotosX(
     val page: Int,
